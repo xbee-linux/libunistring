@@ -1,0 +1,29 @@
+schema-version: 1.0
+
+type: builder
+
+description: |
+  libunistring is a library that provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.
+  Installed Programs: None
+  Installed Libraries: libunistring.so
+  Installed Directory: /usr/include/unistring and /usr/share/doc/libunistring-1.0
+  Short Descriptions
+    libunistring.so: provides the unicode string library API
+
+in:
+  version: "1.0"
+
+
+provision:
+  - url:
+      from: https://ftp.gnu.org/gnu/libunistring/libunistring-{% version %}.tar.xz
+      todir: "{% xbeeSrc %}"
+
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr --disable-static
+        - make
+        - make install DESTDIR="{% xbeeOut %}"
+      directory: "{% xbeeSrc %}/libunistring-{% version %}"
