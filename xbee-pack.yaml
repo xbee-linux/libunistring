@@ -10,14 +10,12 @@ description: |
   Short Descriptions
     libunistring.so: provides the unicode string library API
 
-in:
+var:
   version: "1.0"
 
 
 provision:
-  - url:
-      from: https://ftp.gnu.org/gnu/libunistring/libunistring-{% version %}.tar.xz
-      todir: "{% xbeeSrc %}"
+  url: https://ftp.gnu.org/gnu/libunistring/libunistring-{{ .version }}.tar.xz
 
 
 build:
@@ -25,5 +23,5 @@ build:
       cmds:
         - ./configure --prefix=/usr --disable-static
         - make
-        - make install DESTDIR="{% xbeeOut %}"
-      directory: "{% xbeeSrc %}/libunistring-{% version %}"
+        - make install DESTDIR="{{ .xbee.out }}"
+      directory: "{{ .xbee.src }}/libunistring-{{ .version }}"
