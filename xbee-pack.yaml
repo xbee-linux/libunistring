@@ -11,7 +11,8 @@ description: |
     libunistring.so: provides the unicode string library API
 
 var:
-  version: "1.0"
+  xbee:
+    version: "1.0"
 
 
 provision:
